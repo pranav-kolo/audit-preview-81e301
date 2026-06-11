@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Audit — A · Editorial (LOCAL)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --ink:#211d18;--ink2:#4a4339;--mut:#7a7062;--line:#e3dac9;
+ --cream:#f6efe2;--cream2:#efe6d4;--paper:#fbf7ef;--blue:#0066ff;--blue-d:#0052cc;
+ --r:4px;--shadow:0 18px 50px rgba(60,45,20,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink2);background:#d8d0c2;-webkit-font-smoothing:antialiased;line-height:1.6}
+.page{max-width:480px;margin:0 auto;background:var(--paper);position:relative;padding-bottom:88px;overflow:hidden}
+.serif{font-family:'Fraunces',serif}
+.kick{font-size:11px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--blue)}
+.rule{height:1px;background:var(--line);border:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Inter';font-weight:600;cursor:pointer;border:none}
+.cta{background:var(--blue);color:#fff;padding:15px 26px;border-radius:2px;font-size:15px;letter-spacing:.2px;width:100%}
+.cta:hover{background:var(--blue-d)}
+.cta-ar::after{content:" →";font-weight:400}
+.ghost{border:1px solid var(--ink);color:var(--ink);background:transparent;padding:9px 18px;border-radius:2px;font-size:13px;font-weight:600}
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;position:relative;z-index:20}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Fraunces';font-weight:600;font-size:21px;color:var(--ink);letter-spacing:.3px}
+/* HERO */
+.hero{position:relative;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;background:#16120c}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(177deg,rgba(20,15,8,.34) 0%,rgba(20,15,8,.12) 38%,rgba(20,15,8,.72) 100%)}
+.hero .in{position:relative;padding:34px 26px 38px;color:#fbf7ef}
+.hero .kick{color:#f3d9a8}
+.hero h1{font-family:'Fraunces';font-weight:500;font-size:42px;line-height:1.04;letter-spacing:-.5px;margin:14px 0 0}
+.hero h1 em{font-style:italic;font-weight:500}
+.hero .dek{font-size:15.5px;color:rgba(251,247,239,.86);margin-top:16px;max-width:33ch;line-height:1.55}
+.hero .byline{display:flex;align-items:center;gap:11px;margin-top:22px}
+.hero .byline img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.4)}
+.hero .byline .r1{font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;color:rgba(251,247,239,.6)}
+.hero .byline .r2{font-family:'Fraunces';font-size:15px;font-weight:600;color:#fff}
+.hero .cwrap{margin-top:24px;max-width:300px}
+/* PROOF — editorial masthead numbers */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:22px 16px;text-align:center;border-right:1px solid var(--line)}
+.proof div:last-child{border-right:0}
+.proof .n{font-family:'Fraunces';font-size:27px;font-weight:600;color:var(--ink);line-height:1}
+.proof .l{font-size:11px;letter-spacing:.4px;color:var(--mut);margin-top:8px;line-height:1.35}
+section{padding:54px 26px}
+.sh{font-family:'Fraunces';font-weight:500;font-size:31px;line-height:1.1;color:var(--ink);letter-spacing:-.4px;margin-top:14px}
+.lede{font-size:16px;color:var(--ink2);margin-top:14px;max-width:42ch}
+.lede .drop{float:left;font-family:'Fraunces';font-weight:600;font-size:54px;line-height:.78;padding:6px 10px 0 0;color:var(--blue)}
+/* HOW — editorial numbered list */
+.how{background:var(--paper)}
+.entry{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+.entry:first-of-type{border-top:1px solid var(--line);margin-top:26px}
+.entry .no{font-family:'Fraunces';font-size:30px;font-weight:500;color:var(--blue);line-height:1}
+.entry h4{font-family:'Fraunces';font-size:19px;font-weight:600;color:var(--ink)}
+.entry p{font-size:14.5px;color:var(--ink2);margin-top:5px}
+/* WHAT — full-bleed plate + index */
+.what{background:var(--cream);position:relative}
+.plate{margin:24px -26px 0;position:relative}
+.plate img{width:100%;height:260px;object-fit:cover;display:block}
+.plate figcaption{font-family:'Fraunces';font-style:italic;font-size:13px;color:var(--mut);padding:10px 26px 0}
+.idx{margin-top:30px}
+.idx .row{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.idx .row:first-child{border-top:1px solid var(--line)}
+.idx .ri{font-family:'Fraunces';font-size:15px;font-weight:600;color:var(--blue)}
+.idx h5{font-family:'Fraunces';font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.idx p{font-size:14px;color:var(--ink2)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px}
+/* ASPIRATION full-bleed pull */
+.asp{position:relative;min-height:420px;display:flex;align-items:flex-end;padding:0;background:#16120c}
+.asp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.asp .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,8,.1),rgba(20,15,8,.78))}
+.asp .in{position:relative;padding:40px 26px;color:#fbf7ef}
+.asp h2{font-family:'Fraunces';font-weight:500;font-style:italic;font-size:30px;line-height:1.15;letter-spacing:-.3px}
+.asp p{font-size:15px;color:rgba(251,247,239,.84);margin-top:14px;max-width:40ch}
+/* PULLQUOTE testimonial */
+.tst{background:var(--paper);text-align:center}
+.tst .mark{font-family:'Fraunces';font-size:80px;line-height:.5;color:var(--cream2);height:42px;display:block}
+.tst blockquote{font-family:'Fraunces';font-weight:500;font-size:25px;line-height:1.32;color:var(--ink);letter-spacing:-.3px;max-width:24ch;margin:0 auto}
+.tst .by{margin-top:24px;font-size:13px;letter-spacing:.4px;color:var(--mut);text-transform:uppercase}
+.tst .by b{color:var(--ink);font-weight:600}
+.tst .stars{color:#caa24a;font-size:15px;letter-spacing:3px;margin-top:18px}
+.minis{display:grid;gap:14px;margin-top:40px;text-align:left}
+.mini{border-top:1px solid var(--line);padding-top:14px}
+.mini p{font-size:14px;color:var(--ink2)}.mini .mb{font-size:12px;color:var(--mut);margin-top:8px;letter-spacing:.3px;text-transform:uppercase}
+/* PRICING editorial */
+.price{background:var(--cream)}
+.pcard{background:var(--paper);border:1px solid var(--ink);border-radius:2px;padding:30px 26px;margin-top:26px;position:relative}
+.pcard .rib{position:absolute;top:-1px;right:-1px;background:var(--ink);color:var(--cream);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;padding:6px 14px}
+.pcard .pn{font-family:'Fraunces';font-size:19px;font-weight:600;color:var(--ink)}
+.pcard .pp{font-family:'Fraunces';font-size:40px;font-weight:600;color:var(--ink);margin:8px 0 2px}
+.pcard .pp s{font-family:'Inter';font-size:13px;color:var(--mut);font-weight:400;margin-left:8px}
+.flist{margin:18px 0 22px}
+.flist div{display:flex;gap:10px;font-size:14px;color:var(--ink2);padding:7px 0;border-bottom:1px dotted var(--line)}
+.flist .t{color:var(--blue);font-weight:700}
+.palt{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+.palt:first-of-type{border-top:1px solid var(--line);margin-top:18px}
+.palt b{font-family:'Fraunces';color:var(--ink);font-size:16px}.palt .m{color:var(--mut);font-size:12.5px}
+/* FAQ */
+.faq{background:var(--paper)}
+.q{border-bottom:1px solid var(--line);padding:18px 0}
+.q .qq{font-family:'Fraunces';font-weight:600;font-size:16px;color:var(--ink);display:flex;justify-content:space-between;gap:14px}
+.q .aa{font-size:14px;color:var(--ink2);margin-top:9px;max-width:54ch}
+footer{background:var(--ink);color:rgba(251,247,239,.6);padding:34px 26px;text-align:center}
+footer .fl{font-family:'Fraunces';font-size:19px;color:#fbf7ef;font-weight:600}
+footer .fk{font-size:12px;margin-top:10px;letter-spacing:.4px}
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:480px;width:100%;padding:12px 18px;background:rgba(251,247,239,.95);border-top:1px solid var(--line);backdrop-filter:blur(8px);z-index:40}
+.tag{position:fixed;top:8px;left:8px;background:var(--ink);color:#fbf7ef;font-size:10px;font-weight:700;padding:4px 10px;border-radius:2px;z-index:50;font-family:monospace;letter-spacing:1px}
+.dk{display:none}
+@media(min-width:900px){
+ .page{max-width:1180px;padding-bottom:0}
+ header{padding:26px 64px}.logo{font-size:24px}
+ .hero{min-height:640px}.hero .in{padding:0 64px 70px;width:60%}
+ .hero h1{font-size:74px}.hero .dek{font-size:19px;max-width:40ch}
+ .proof div{padding:34px}.proof .n{font-size:38px}.proof .l{font-size:12.5px}
+ section{padding:96px 64px}
+ .sh{font-size:46px}.lede{font-size:18px}
+ .center{max-width:760px;margin:0 auto}
+ .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;align-items:start}
+ .entry:first-of-type{margin-top:0}
+ .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+ .plate{margin:0}.plate img{height:520px}
+ .asp{min-height:560px}.asp .in{padding:0 64px 80px;width:64%}.asp h2{font-size:46px}.asp p{font-size:18px}
+ .tst blockquote{font-size:44px;max-width:20ch}.tst .mark{font-size:120px}
+ .minis{grid-template-columns:repeat(3,1fr);gap:34px;max-width:980px;margin:56px auto 0}
+ .pwrap{display:grid;grid-template-columns:1.3fr .9fr;gap:48px;align-items:start}
+ .pcard{margin-top:0}.paltcol{padding-top:6px}
+ .faq-grid{max-width:820px;margin:0 auto}
+ .sticky{display:none}.dk{display:block}
+ .hero .cwrap{max-width:340px}
+}
+@media(max-width:899px){.mob-hide{display:none}}
+</style></head>
+<body>
+<div class="tag">A · EDITORIAL</div>
+<div class="page">
+ <header>
+  <div class="logo"><svg width="23" height="23" viewBox="0 0 63 63" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M31.8114 12.6509L11.5072 26.8721V33.3948H8.79801V28.7696L2.27677 33.3371L0.334351 30.5623L31.5954 8.66692L31.7375 8.46387L62.9999 30.3602L61.0575 33.135L53.3322 27.7242V37.7985H50.623V25.8267L31.8114 12.6509ZM40.8287 36.5929H36.196V50.934C36.196 52.121 36.5292 53.0397 37.1957 53.69C37.8622 54.3242 38.8131 54.6412 40.0485 54.6412L40.8287 36.5929Z" fill="#211d18"/></svg> Kolo</div>
+  <button class="btn ghost">Start a review</button>
+ </header>
+
+ <!-- HERO -->
+ <section class="hero">
+  <img src="assets/editorial_hero.png" alt="Couple inside their under-construction home" onerror="this.src='assets/hero-couple-architect.jpg'"/>
+  <div class="scrim"></div>
+  <div class="in">
+   <span class="kick">Advisory · A second pair of eyes</span>
+   <h1>The costly mistake hides <em>in the page you're about to sign.</em></h1>
+   <p class="dek">Send the plan, quote, or contract. A Kolo advisor reads it the way an owner can't — and tells you what it'll really cost you.</p>
+   <div class="byline"><img src="https://i.koloapp.in/82f51e12-1e41-4349-9b0c-9614e78fe3b4" alt="" onerror="this.style.display='none'"/><div><div class="r1">Reviewed by</div><div class="r2">Teenu Johny · Architect</div></div></div>
+   <div class="cwrap"><button class="btn cta cta-ar">Start the review — from ₹2,949</button></div>
+  </div>
+ </section>
+
+ <!-- PROOF -->
+ <div class="proof">
+  <div><div class="n">48 hrs</div><div class="l">Report turnaround</div></div>
+  <div><div class="n">Named</div><div class="l">advisor signs off</div></div>
+  <div><div class="n">₹0</div><div class="l">refund before delivery</div></div>
+ </div>
+
+ <!-- HOW -->
+ <section class="how">
+  <div class="how-grid">
+   <div>
+    <span class="kick">How it reads</span>
+    <h2 class="sh">Three steps.<br/>One clear report.</h2>
+    <p class="lede mob-hide"><span class="drop">Y</span>ou don't need to learn to read a quotation or a contract. You need someone who already can — and who is on your side when it matters.</p>
+   </div>
+   <div>
+    <div class="entry"><div class="no">01</div><div><h4>Send it on WhatsApp</h4><p>A floor plan, a quotation, or an agreement — whatever you're about to approve.</p></div></div>
+    <div class="entry"><div class="no">02</div><div><h4>An advisor reads the risk</h4><p>Layout efficiency, quote gaps, or contract terms that quietly leave you exposed.</p></div></div>
+    <div class="entry"><div class="no">03</div><div><h4>Your report, in 48 hours</h4><p>Marked findings, the fixes that matter first, and the questions to take back.</p></div></div>
+   </div>
+  </div>
+ </section>
+
+ <!-- WHAT -->
+ <section class="what">
+  <div class="what-grid">
+   <figure class="plate"><img src="assets/gen_markup_report.png" alt="Advisor marking corrections on a floor plan"/><figcaption>An advisor's markup — the circled detail a glance would miss.</figcaption></figure>
+   <div>
+    <span class="kick">What we check</span>
+    <h2 class="sh">The miss you can't see — until it costs you.</h2>
+    <div class="idx">
+     <div class="row"><div class="ri">01</div><div><h5>Floor plan</h5><p>Wasted square feet, awkward circulation, weak daylight, choices that age badly on site.</p></div></div>
+     <div class="row"><div class="ri">02</div><div><h5>Quotation</h5><p>Missing scope, mismatched specs, inflated lines, and low prices that hide future extras.</p></div></div>
+     <div class="row"><div class="ri">03</div><div><h5>Agreement</h5><p>Vague milestones, risky advance terms, weak exit clauses, language that exposes you.</p></div></div>
+    </div>
+    <div class="tags"><span class="tag">Material selection</span><span class="tag">Professional shortlist</span><span class="tag">Stage-by-stage review</span></div>
+   </div>
+  </div>
+ </section>
+
+ <!-- ASPIRATION -->
+ <section class="asp">
+  <img src="assets/hero-family-dream.jpg" alt="Family in front of their finished home"/>
+  <div class="scrim"></div>
+  <div class="in">
+   <span class="kick" style="color:#f3d9a8">Why it matters</span>
+   <h2>₹15 lakh and years of your life go into this home.</h2>
+   <p>One missed detail in a plan, quote, or contract can quietly cost you a fortune — and the home you pictured. A 48-hour review is the cheapest insurance you'll buy.</p>
+  </div>
+ </section>
+
+ <!-- TESTIMONIAL -->
+ <section class="tst">
+  <span class="mark">&ldquo;</span>
+  <blockquote>He compared the quotes, and on every hard call with the execution team, he was on my side.</blockquote>
+  <div class="stars">★★★★★</div>
+  <div class="by"><b>Seemas Justin</b> · Kollam &nbsp;—&nbsp; Quotation analysis · ₹15L project</div>
+  <div class="minis">
+   <div class="mini"><p>"Detailed analysis. The quotation was broken down — strengths and weaknesses of each supplier, all in one place."</p><div class="mb">Anumod · Quotation analysis</div></div>
+   <div class="mini"><p>"The advisor reviewed my plans properly and pointed out all the required corrections. Happy with the service."</p><div class="mb">Bimal · Plan review</div></div>
+   <div class="mini"><p>"Architects and surveyors who've read hundreds of Kerala builds — not a chatbot summarising a PDF."</p><div class="mb">Real advisors · real project context</div></div>
+  </div>
+ </section>
+
+ <!-- PRICING -->
+ <section class="price">
+  <span class="kick">Start your review</span>
+  <h2 class="sh">Pick what you need read.</h2>
+  <div class="pwrap">
+   <div class="pcard">
+    <div class="rib">Most chosen</div>
+    <div class="pn">Single Audit</div>
+    <div class="pp">₹2,949 <s>incl. GST</s></div>
+    <div class="flist">
+     <div><span class="t">✓</span>One document — floor plan, quote, or agreement</div>
+     <div><span class="t">✓</span>Named advisor review + action report in 48 hours</div>
+     <div><span class="t">✓</span>Full refund any time before delivery</div>
+    </div>
+    <button class="btn cta cta-ar">Start the review — ₹2,949</button>
+   </div>
+   <div class="paltcol">
+    <div class="palt"><span>Complete Audit <span class="m">· all documents</span></span><b>₹5,899</b></div>
+    <div class="palt"><span>Stage Review <span class="m">· during the build</span></span><b>₹3,539</b></div>
+    <figure class="plate mob-hide" style="margin-top:22px"><img src="assets/editorial_detail.png" style="height:200px" alt="Architectural detail" onerror="this.src='assets/home-details-collage.png'"/></figure>
+   </div>
+  </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="faq">
+  <div class="faq-grid">
+   <span class="kick">Before you start</span>
+   <h2 class="sh">Common questions.</h2>
+   <div style="margin-top:22px">
+    <div class="q"><div class="qq">What if I disagree with the findings?<span>+</span></div><div class="aa">The report is a clear action list, not a verdict — you decide what to take back to your architect or contractor. The advisor is on your side.</div></div>
+    <div class="q"><div class="qq">How fast is the report?<span>+</span></div><div class="aa">Within 48 hours of you sending the document on WhatsApp.</div></div>
+    <div class="q"><div class="qq">What if I change my mind?<span>+</span></div><div class="aa">Full refund any time before your first report is sent back.</div></div>
+   </div>
+   <div style="max-width:340px;margin:30px auto 0"><button class="btn cta cta-ar">Start the review — ₹2,949</button></div>
+  </div>
+ </section>
+
+ <footer>
+  <div class="fl">Kolo</div>
+  <div class="fk">Privacy · Terms · Contact</div>
+  <div class="fk" style="opacity:.6">© 2026 Kolo</div>
+ </footer>
+ <div class="sticky"><button class="btn cta cta-ar">Start the review — ₹2,949</button></div>
+</div>
+</body></html>

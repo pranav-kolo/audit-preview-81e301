@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Audit — C · Poster (LOCAL)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --ink:#0a0b0d;--blue:#0066ff;--blue-d:#0052cc;--cream:#f3ecdd;--cream-d:#e8dec9;
+ --white:#fff;--mut:#6b7480;--line:#1c1e22;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#cfd3d8;-webkit-font-smoothing:antialiased;line-height:1.5}
+.page{max-width:480px;margin:0 auto;background:var(--cream);position:relative;padding-bottom:84px;overflow:hidden}
+.disp{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.03em;line-height:.9;text-transform:uppercase}
+.kick{font-family:'Archivo';font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Archivo';font-weight:800;cursor:pointer;border:none;text-transform:uppercase;letter-spacing:.02em}
+.cta{background:var(--blue);color:#fff;padding:17px 26px;font-size:15px;width:100%;border:2px solid var(--blue)}
+.cta:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.cta-w{background:var(--white);color:var(--ink);border:2px solid var(--white)}
+.cta-w:hover{background:var(--cream)}
+.ghost{background:transparent;border:2px solid currentColor;padding:9px 16px;font-size:12px}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--ink);color:#fff;position:relative;z-index:20}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Archivo';font-weight:900;font-size:21px;letter-spacing:-.02em;text-transform:lowercase}
+/* HERO */
+.hero{background:var(--ink);color:#fff;padding:30px 20px 0;position:relative;overflow:hidden}
+.hero .kick{color:#7cb0ff}
+.hero h1{margin-top:14px}
+.hero h1 .l{display:block;font-family:'Archivo';font-weight:900;font-size:62px;line-height:.86;letter-spacing:-.035em;text-transform:uppercase}
+.hero h1 .l.b{color:var(--blue);-webkit-text-stroke:0}
+.hero h1 .l.o{color:var(--cream);-webkit-text-stroke:1.5px var(--cream);background:transparent;color:transparent}
+.hero p{font-size:15.5px;color:rgba(255,255,255,.74);margin-top:18px;max-width:34ch}
+.hero .cwrap{margin-top:22px;max-width:330px;display:flex;flex-direction:column;gap:10px;padding-bottom:26px}
+.hero .note{font-family:'Archivo';font-weight:600;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5);text-transform:uppercase}
+.hero .photo{margin:6px -20px 0;height:230px;position:relative;border-top:3px solid var(--blue)}
+.hero .photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;filter:grayscale(.15) contrast(1.05)}
+.hero .photo .tagstrip{position:absolute;left:0;bottom:0;background:var(--blue);color:#fff;font-family:'Archivo';font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px}
+/* TICKER */
+.ticker{background:var(--blue);color:#fff;overflow:hidden;white-space:nowrap;padding:13px 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.ticker .run{display:inline-block;animation:mar 22s linear infinite;font-family:'Archivo';font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase}
+.ticker .run span{margin:0 14px;opacity:.55}
+@keyframes mar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* BIG NUMBER stakes */
+.bignum{background:var(--cream);padding:48px 20px;text-align:center;border-bottom:3px solid var(--ink)}
+.bignum .kick{color:var(--blue)}
+.bignum .huge{font-family:'Archivo';font-weight:900;font-size:60px;line-height:.86;letter-spacing:-.045em;color:var(--ink);margin:12px 0 0}
+.bignum .huge .rs{font-size:34px;vertical-align:top;line-height:1}
+.bignum h2{font-family:'Archivo';font-weight:800;font-size:23px;letter-spacing:-.01em;text-transform:uppercase;margin-top:18px;line-height:1.05}
+.bignum p{font-size:15px;color:var(--mut);margin-top:12px;max-width:38ch;margin-left:auto;margin-right:auto}
+/* HOW big numbered blocks */
+.how{background:var(--ink)}
+.hb{padding:30px 20px;border-bottom:3px solid #000;color:#fff;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start}
+.hb:nth-child(1){background:var(--ink)}
+.hb:nth-child(2){background:var(--blue)}
+.hb:nth-child(3){background:var(--cream);color:var(--ink)}
+.hb .bn{font-family:'Archivo';font-weight:900;font-size:58px;line-height:.8;letter-spacing:-.04em;flex:0 0 auto;opacity:.95}
+.hb>div:last-child{min-width:0}
+.hb:nth-child(1) .bn{color:var(--blue)}
+.hb:nth-child(2) .bn{color:#fff}
+.hb:nth-child(3) .bn{color:var(--blue)}
+.hb h4{font-family:'Archivo';font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:-.01em}
+.hb p{font-size:14px;margin-top:7px;opacity:.82;max-width:34ch}
+.how-head{padding:34px 20px 6px;background:var(--ink);color:#fff}
+.how-head .kick{color:#7cb0ff}
+.how-head h2{font-family:'Archivo';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:-.03em;margin-top:10px;line-height:.95}
+.how,.hb-wrap{min-width:0}
+/* WHAT tiles */
+.what{background:var(--cream);padding:40px 20px 44px}
+.what .kick{color:var(--blue)}
+.what h2{font-family:'Archivo';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:-.03em;margin-top:10px;line-height:.95}
+.tiles{margin-top:24px;display:grid;gap:0;border:3px solid var(--ink)}
+.tile{padding:22px 20px;border-bottom:3px solid var(--ink);background:var(--cream)}
+.tile:last-child{border-bottom:0}
+.tile .th{display:flex;align-items:baseline;gap:14px}
+.tile .ti{font-family:'Archivo';font-weight:900;font-size:30px;color:var(--blue);line-height:1}
+.tile .tn{font-family:'Archivo';font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:-.01em}
+.tile p{font-size:14px;color:var(--mut);margin-top:10px;max-width:46ch}
+.row-tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:0}
+.row-tags span{font-family:'Archivo';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;border:2px solid var(--ink);padding:8px 13px;margin:-1px 0 0 -2px;background:var(--cream)}
+/* TESTIMONIAL big quote */
+.tst{background:var(--blue);color:#fff;padding:48px 20px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.tst .kick{color:rgba(255,255,255,.7)}
+.tst blockquote{font-family:'Archivo';font-weight:800;font-size:30px;line-height:1.04;letter-spacing:-.02em;margin-top:16px}
+.tst .by{font-family:'Archivo';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin-top:22px;color:rgba(255,255,255,.85)}
+.tst .mini-row{display:grid;gap:0;margin-top:30px;border:2px solid rgba(255,255,255,.3)}
+.tst .mr{padding:15px 16px;border-bottom:2px solid rgba(255,255,255,.3)}
+.tst .mr:last-child{border-bottom:0}
+.tst .mr p{font-size:14px;color:#fff;font-weight:500}
+.tst .mr .mb{font-family:'Archivo';font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.7);margin-top:7px}
+/* PRICING */
+.price{background:var(--ink);color:#fff;padding:42px 20px}
+.price .kick{color:#7cb0ff}
+.price h2{font-family:'Archivo';font-weight:900;font-size:34px;text-transform:uppercase;letter-spacing:-.03em;margin-top:10px}
+.pcard{border:3px solid var(--blue);background:#0e1320;margin-top:24px}
+.pcard .pt{background:var(--blue);color:#fff;font-family:'Archivo';font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:9px 18px;display:flex;justify-content:space-between}
+.pcard .pbody{padding:24px 20px}
+.pcard .pp{font-family:'Archivo';font-weight:900;font-size:56px;line-height:.85;letter-spacing:-.04em}
+.pcard .pp .rs{font-size:30px;vertical-align:top}
+.pcard .ps{font-size:13px;color:#8b97ad;margin-top:8px}
+.pcard ul{list-style:none;margin:20px 0 22px}
+.pcard li{display:flex;gap:11px;font-size:14.5px;color:#dfe5ee;padding:9px 0;border-bottom:1px solid #1c2433}
+.pcard li b{color:var(--blue);font-family:'Archivo';font-weight:900}
+.palt{display:flex;gap:0;margin-top:14px}
+.palt div{flex:1;border:2px solid #2a3447;padding:14px 16px;margin-left:-2px}
+.palt div:first-child{margin-left:0}
+.palt .an{font-family:'Archivo';font-weight:800;font-size:13px;text-transform:uppercase}
+.palt .av{font-family:'Archivo';font-weight:900;font-size:22px;margin-top:6px}
+.palt .ad{font-size:11.5px;color:#8b97ad;margin-top:2px}
+/* FAQ */
+.faq{background:var(--cream);padding:40px 20px}
+.faq .kick{color:var(--blue)}
+.faq h2{font-family:'Archivo';font-weight:900;font-size:30px;text-transform:uppercase;letter-spacing:-.03em;margin-top:10px}
+.q{border-top:2px solid var(--ink);padding:16px 0}
+.q:last-of-type{border-bottom:2px solid var(--ink)}
+.q .qq{font-family:'Archivo';font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.01em;display:flex;justify-content:space-between;gap:12px}
+.q .aa{font-size:14px;color:var(--mut);margin-top:9px}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:30px 20px}
+.fl{font-family:'Archivo';font-weight:900;font-size:20px;color:#fff;text-transform:lowercase;display:flex;align-items:center;gap:8px}
+.fk{font-family:'Archivo';font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;margin-top:11px}
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:480px;width:100%;padding:11px 14px;background:var(--ink);border-top:3px solid var(--blue);z-index:40}
+.tag{position:fixed;top:8px;left:8px;background:var(--blue);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;z-index:50;font-family:monospace;letter-spacing:1px}
+.dk{display:none}
+@media(min-width:900px){
+ .page{max-width:1180px;padding-bottom:0}
+ header{padding:18px 56px}
+ .hero{padding:64px 56px 0}
+ .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+ .hero h1 .l{font-size:104px}
+ .hero p{font-size:19px;max-width:38ch}
+ .hero .photo{margin:0;height:460px;border-top:0;border-left:3px solid var(--blue)}
+ .hero .cwrap{padding-bottom:0}
+ .ticker .run{font-size:18px}
+ .bignum{padding:80px 56px}.bignum .huge{font-size:150px}.bignum .huge .rs{font-size:80px}.bignum h2{font-size:34px}
+ .how-head{padding:70px 56px 0}.how-head h2{font-size:54px}
+ .hb-wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+ .hb{display:block;border-bottom:0;border-right:3px solid #000;min-height:300px;padding:40px 32px}
+ .hb .bn{margin-bottom:14px}
+ .hb:last-child{border-right:0}.hb .bn{font-size:80px}
+ .what{padding:80px 56px}.what h2{font-size:54px}
+ .tiles{grid-template-columns:repeat(3,1fr)}
+ .tile{border-bottom:0;border-right:3px solid var(--ink)}.tile:last-child{border-right:0}
+ .tst{padding:80px 56px}.tst blockquote{font-size:54px;max-width:18ch}
+ .tst .mini-row{grid-template-columns:repeat(3,1fr);margin-top:40px}
+ .tst .mr{border-bottom:0;border-right:2px solid rgba(255,255,255,.3)}.tst .mr:last-child{border-right:0}
+ .price{padding:80px 56px}.price h2{font-size:54px}
+ .pwrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+ .pcard{margin-top:0}.pcard .pp{font-size:72px}
+ .palt{flex-direction:column;margin-top:0}.palt div{margin-left:0;margin-top:-2px}.palt div:first-child{margin-top:0}
+ .faq{padding:80px 56px}.faq h2{font-size:44px}
+ .faq-grid{max-width:820px;margin:0 auto}
+ .sticky{display:none}.dk{display:block}
+ .hero h1 .l.o{-webkit-text-stroke:2px var(--cream)}
+}
+@media(max-width:899px){.mob-hide{display:none}}
+</style></head>
+<body>
+<div class="tag">C · POSTER</div>
+<div class="page">
+ <header>
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 63 63" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M31.8114 12.6509L11.5072 26.8721V33.3948H8.79801V28.7696L2.27677 33.3371L0.334351 30.5623L31.5954 8.66692L31.7375 8.46387L62.9999 30.3602L61.0575 33.135L53.3322 27.7242V37.7985H50.623V25.8267L31.8114 12.6509ZM40.8287 36.5929H36.196V50.934C36.196 52.121 36.5292 53.0397 37.1957 53.69C37.8622 54.3242 38.8131 54.6412 40.0485 54.6412L40.8287 36.5929Z" fill="#0066ff"/></svg> kolo</div>
+  <button class="btn ghost" style="color:#fff">Start review</button>
+ </header>
+
+ <!-- HERO -->
+ <section class="hero"><div class="hero-in">
+  <div>
+   <span class="kick">Advisor-reviewed · 48-hour report</span>
+   <h1><span class="l">Sign</span><span class="l b">nothing</span><span class="l o">blind.</span></h1>
+   <p>Send the plan, quote, or contract you're about to approve. An advisor flags what could cost you lakhs — before you commit.</p>
+   <div class="cwrap">
+    <button class="btn cta">Start the review — from ₹2,949</button>
+    <span class="note">Refundable before delivery · No account</span>
+   </div>
+  </div>
+  <div class="photo">
+   <img src="assets/poster_portrait.png" alt="Homeowner" onerror="this.src='assets/hero-decision-table.png';this.style.objectPosition='center'"/>
+   <span class="tagstrip">Reviewed by a named advisor</span>
+  </div>
+ </div></section>
+
+ <!-- TICKER -->
+ <div class="ticker"><div class="run">48-HOUR REPORT <span>///</span> NAMED ADVISOR <span>///</span> ₹0 REFUND BEFORE DELIVERY <span>///</span> FLOOR PLAN · QUOTE · CONTRACT <span>///</span> 48-HOUR REPORT <span>///</span> NAMED ADVISOR <span>///</span> ₹0 REFUND BEFORE DELIVERY <span>///</span> FLOOR PLAN · QUOTE · CONTRACT <span>///</span> </div></div>
+
+ <!-- BIG NUMBER -->
+ <section class="bignum">
+  <span class="kick">Why it matters</span>
+  <div class="huge"><span class="rs">₹</span>15,00,000</div>
+  <h2>goes into this home.</h2>
+  <p>One missed line in a plan, quote, or contract can quietly cost you a chunk of it. A 48-hour review is the cheapest insurance you'll buy.</p>
+ </section>
+
+ <!-- HOW -->
+ <div class="how-head"><span class="kick">How it works</span><h2>Three steps.<br/>One clear report.</h2></div>
+ <div class="how"><div class="hb-wrap">
+  <div class="hb"><div class="bn">01</div><div><h4>Send it on WhatsApp</h4><p>Floor plan, quote, or agreement — whatever you're about to approve.</p></div></div>
+  <div class="hb"><div class="bn">02</div><div><h4>An advisor reviews the risk</h4><p>Layout efficiency, quote gaps, or contract terms that leave you exposed.</p></div></div>
+  <div class="hb"><div class="bn">03</div><div><h4>Report in 48 hrs</h4><p>Marked findings, priority fixes, and the questions to take back.</p></div></div>
+ </div></div>
+
+ <!-- WHAT -->
+ <section class="what">
+  <span class="kick">What gets caught</span>
+  <h2>The miss you can't see.</h2>
+  <div class="tiles">
+   <div class="tile"><div class="th"><span class="ti">01</span><span class="tn">Floor plan</span></div><p>Wasted sq.ft., awkward circulation, weak daylight, and layout choices that age badly on site.</p></div>
+   <div class="tile"><div class="th"><span class="ti">02</span><span class="tn">Quotation</span></div><p>Missing scope, mismatched specs, inflated line items, and low prices that hide future extras.</p></div>
+   <div class="tile"><div class="th"><span class="ti">03</span><span class="tn">Agreement</span></div><p>Vague milestones, risky advance terms, weak exit clauses, and language that exposes you.</p></div>
+  </div>
+  <div class="row-tags"><span>Material selection</span><span>Professional shortlist</span><span>Stage-by-stage review</span></div>
+ </section>
+
+ <!-- TESTIMONIAL -->
+ <section class="tst">
+  <span class="kick">After a review</span>
+  <blockquote>"He was on my side on every hard call with the execution team."</blockquote>
+  <div class="by">Seemas Justin · Kollam — Quotation analysis · ₹15L project</div>
+  <div class="mini-row">
+   <div class="mr"><p>"Strengths and weaknesses of each supplier, all in one place."</p><div class="mb">Anumod · Quotation analysis</div></div>
+   <div class="mr"><p>"Reviewed my plans properly and pointed out all the corrections."</p><div class="mb">Bimal · Plan review</div></div>
+   <div class="mr"><p>"Architects and surveyors — not a chatbot summarising a PDF."</p><div class="mb">Real advisors · real context</div></div>
+  </div>
+ </section>
+
+ <!-- PRICING -->
+ <section class="price">
+  <div class="pwrap">
+   <div>
+    <span class="kick">Start your review</span>
+    <h2>Pick what you need checked.</h2>
+    <div class="pcard">
+     <div class="pt"><span>Single Audit</span><span>Most popular</span></div>
+     <div class="pbody">
+      <div class="pp"><span class="rs">₹</span>2,949</div>
+      <div class="ps">incl. GST · one document</div>
+      <ul>
+       <li><b>→</b>One document — floor plan, quote, or agreement</li>
+       <li><b>→</b>Named advisor review + report in 48 hrs</li>
+       <li><b>→</b>Full refund any time before delivery</li>
+      </ul>
+      <button class="btn cta">Start the review — ₹2,949</button>
+     </div>
+    </div>
+   </div>
+   <div class="palt">
+    <div><div class="an">Complete Audit</div><div class="av">₹5,899</div><div class="ad">All documents</div></div>
+    <div><div class="an">Stage Review</div><div class="av">₹3,539</div><div class="ad">During the build</div></div>
+   </div>
+  </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="faq">
+  <div class="faq-grid">
+   <span class="kick">Before you start</span>
+   <h2>Common questions.</h2>
+   <div style="margin-top:20px">
+    <div class="q"><div class="qq">Disagree with the findings?<span>+</span></div><div class="aa">The report is a clear action list, not a verdict — you decide what to take back to your architect or contractor. The advisor is on your side.</div></div>
+    <div class="q"><div class="qq">How fast is the report?<span>+</span></div><div class="aa">Within 48 hours of you sending the document on WhatsApp.</div></div>
+    <div class="q"><div class="qq">Change your mind?<span>+</span></div><div class="aa">Full refund any time before your first report is sent back.</div></div>
+   </div>
+   <div style="margin-top:26px"><button class="btn cta">Start the review — ₹2,949</button></div>
+  </div>
+ </section>
+
+ <footer>
+  <div class="fl"><svg width="17" height="17" viewBox="0 0 63 63" fill="none"><path d="M31.8114 12.6509L11.5072 26.8721V33.3948H8.79801V28.7696L2.27677 33.3371L0.334351 30.5623L31.5954 8.66692L31.7375 8.46387L62.9999 30.3602L61.0575 33.135L53.3322 27.7242V37.7985H50.623V25.8267L31.8114 12.6509Z" fill="#fff"/></svg> kolo</div>
+  <div class="fk">Privacy · Terms · Contact</div>
+  <div class="fk" style="opacity:.6">© 2026 Kolo</div>
+ </footer>
+ <div class="sticky"><button class="btn cta">Start the review — ₹2,949</button></div>
+</div>
+</body></html>
