@@ -12,6 +12,8 @@
  --green:#1f9d63;--amber:#e08a1e;--red:#e0533a;
  --cream:#f3ecdd;--cream-line:#e3dac9;
  --r:14px;--rs:9px;--sh:0 1px 2px rgba(12,19,32,.05),0 10px 30px rgba(12,19,32,.07);
+ /* full-bleed helper: section bg spans the viewport, content centred to a 1180px rail */
+ --maxw:1180px;--pad:max(56px,calc((100% - 1180px)/2));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;color:var(--ink2);background:#e7ebf1;-webkit-font-smoothing:antialiased;line-height:1.55}
@@ -166,12 +168,12 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
 .dk{display:none}
 
 @media(min-width:900px){
- .page{max-width:1180px;padding-bottom:0}
- header{padding:18px 56px}
- section{padding:84px 56px}.sh{font-size:40px}
+ .page{max-width:none;padding-bottom:0}
+ header{padding:18px var(--pad)}
+ section{padding:84px var(--pad)}.sh{font-size:40px}
  .center{max-width:760px;margin:0 auto}
- .hero{padding:0;border-bottom:1px solid var(--line)}
- .hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;padding:76px 56px}
+ .hero{padding:76px var(--pad);border-bottom:1px solid var(--line)}
+ .hero-in{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
  .hero h1{font-size:58px;letter-spacing:-2px}.hero p{font-size:18px;max-width:40ch}
  .mock{margin-top:0}.mock .body img{height:300px}
  .herocard{margin-top:0}.herocard .hc-shot img{height:300px}
@@ -181,7 +183,7 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
  .what-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
  .plate{margin-top:0}.plate img{height:440px}
  .idx{margin-top:8px}
- .why{padding:104px 56px}.why .huge{font-size:150px}.why .huge .rs{font-size:80px}.why h2{font-size:36px}.why p{font-size:17px}
+ .why{padding:104px var(--pad)}.why .huge{font-size:150px}.why .huge .rs{font-size:80px}.why h2{font-size:36px}.why p{font-size:17px}
  .asp{display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch}
  .asp-img{height:100%;min-height:480px}
  .asp-tx{padding:0 56px;display:flex;flex-direction:column;justify-content:center}
@@ -195,6 +197,7 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
  .faq-list{margin-top:8px}
  .sticky{display:none}.dk{display:block}
  .narrow{max-width:780px}
+ footer{padding:40px var(--pad)}
 }
 @media(max-width:899px){.mob-hide{display:none}}
 </style></head>
@@ -209,8 +212,8 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
  <section class="hero"><div class="hero-in">
   <div>
    <span class="statusbar"><span class="dot"></span> A real advisor reviews it — usually back in 48 hours</span>
-   <h1>Get it checked before you <span class="hl">sign, pay, or build</span>.</h1>
-   <p>Send the floor plan, quote, or contract you're about to approve. A real advisor sends back a marked-up report of what to fix — within 48 hours.</p>
+   <h1>Run your plan through a <span class="hl">real review</span> before you sign.</h1>
+   <p>Send one document. An advisor returns a marked-up report — every risk flagged, ranked, and explained — in 48 hours.</p>
    <div class="herocta">
     <button class="btn cta">Start the review — from ₹2,949 →</button>
     <span class="heronote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#697587" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sent on WhatsApp · No app or account · Refundable before delivery</span>
