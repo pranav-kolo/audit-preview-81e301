@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Audit — Combined (LOCAL)</title>
+<title>Audit — Combined Dark (LOCAL)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -188,6 +188,40 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
  .narrow{max-width:780px}
 }
 @media(max-width:899px){.mob-hide{display:none}}
+
+/* ===== DARK VARIANT OVERRIDES (cascade-last wins) ===== */
+header{background:#0a0f1a;border-bottom:1px solid #1c2740}
+.logo{color:#fff}
+.logo svg path{fill:#fff}
+.ghost{background:transparent;border-color:#33405c;color:#dfe6f2}
+.ghost:hover{border-color:#fff;color:#fff}
+.hero{background:radial-gradient(130% 90% at 80% 0%,#16233f 0%,#0a0f1a 60%);border-bottom:1px solid #1c2740}
+.hero .eyb{color:#5b9bff}
+.statusbar{background:rgba(255,255,255,.06);border-color:#2b3a57;color:#cdd8ec}
+.hero h1{color:#fff}
+.hero h1 .hl{color:#5b9bff}
+.hero p{color:#aab6cc}
+.heronote{color:#8595b0}
+.heronote svg{stroke:#8595b0}
+.why{background:#0a0f1a;border-top:1px solid #1c2740;border-bottom:1px solid #1c2740}
+.why .eyb{color:#5b9bff}
+.why .huge{color:#fff}
+.why .huge .rs{color:#5b9bff}
+.why h2{color:#fff}
+.why p{color:#aab6cc}
+.price{background:#0a0f1a}
+.price .eyb{color:#5b9bff}
+.price .sh{color:#fff}
+.pcard{background:#111a2c;border-color:#243049}
+.pcard .rib{background:rgba(91,155,255,.16);color:#7cb0ff}
+.pcard .pn{color:#fff}
+.pcard .pp{color:#fff}
+.pcard .pp s{color:#7e8ba1}
+.flist div{color:#c3cdde;border-bottom-color:#243049}
+.paltcol .h{color:#8595b0}
+.palt-row{border-bottom-color:#243049}
+.palt-row .pl b{color:#fff}
+.palt-row .pv{color:#fff}
 </style></head>
 <body>
 <div class="page">
@@ -208,7 +242,7 @@ footer{background:var(--ink);color:#8b97ad;padding:30px 22px}
    </div>
   </div>
   <div class="herovis">
-   <div class="photo"><img src="assets/hero_light.png" alt="Homeowner couple reviewing their floor plan" onerror="this.src='assets/editorial_hero.png'"/></div>
+   <div class="photo"><img src="assets/hero_dark.png" alt="Homeowner couple reviewing their floor plan" onerror="this.src='assets/editorial_hero.png'"/></div>
    <div class="rcard">
     <div class="rc-h"><span class="gd"></span> Your audit report <span class="n">3 risks found</span></div>
     <div class="mrow"><span class="sev h">HIGH</span><span class="mt">Kitchen has no cross-ventilation</span><span class="mv">#01</span></div>
